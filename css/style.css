@@ -1,0 +1,411 @@
+/* Base Setup and Variables */
+:root {
+    --bg-color: #0d0f1a;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a5b8;
+    --accent-color: #00d2ff;
+    --accent-color-2: #3a7bd5;
+
+    /* Glassmorphism settings */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.4);
+
+    --font-main: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 2rem;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animated Gradient Background */
+.bg-shape {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    animation: float 20s infinite alternate;
+}
+
+.bg-shape-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+    top: -200px;
+    left: -200px;
+    opacity: 0.15;
+}
+
+.bg-shape-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--accent-color-2) 0%, transparent 70%);
+    bottom: -100px;
+    right: -100px;
+    opacity: 0.2;
+    animation-delay: -5s;
+}
+
+.bg-shape-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #9d4edd 0%, transparent 70%);
+    top: 40%;
+    left: 30%;
+    opacity: 0.1;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(50px, 50px) scale(1.1);
+    }
+}
+
+/* Glassmorphism Utility */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px var(--glass-shadow);
+}
+
+/* Bento Grid System */
+.bento-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 1.5rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.bento-card {
+    padding: 2rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+}
+
+/* Grid Placements */
+.bento-hero {
+    grid-column: span 2;
+    grid-row: span 2;
+    justify-content: space-between;
+}
+
+.bento-education {
+    grid-column: span 2;
+}
+
+.bento-skills {
+    grid-column: span 2;
+}
+
+.bento-exp-meta {
+    grid-column: span 4;
+}
+
+.bento-exp-microsoft {
+    grid-column: span 2;
+}
+
+.bento-exp-callpicker {
+    grid-column: span 2;
+}
+
+
+/* Typography & Elements */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(to right, #fff, #a0a5b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Hero Section */
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bio {
+    font-size: 1rem;
+    max-width: 90%;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-color-2), var(--accent-color));
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: max-content;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.social-icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent-color);
+}
+
+/* Experience Sections */
+.exp-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.company-logo {
+    max-height: 40px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+}
+
+
+.exp-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.exp-role {
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.exp-bullets {
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.exp-bullets li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+/* Education Section */
+.edu-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.edu-item:last-child {
+    margin-bottom: 0;
+}
+
+.edu-logo-link {
+    display: flex;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.edu-logo-link:hover {
+    transform: scale(1.05);
+}
+
+.edu-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.edu-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.edu-school {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.edu-text-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.edu-text-link:hover {
+    color: var(--accent-color);
+}
+
+.edu-details {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Skills Section */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.skill-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.skill-tag:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .bento-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bento-hero,
+    .bento-exp-meta {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .bento-container {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-card,
+    .bento-hero,
+    .bento-education,
+    .bento-skills,
+    .bento-exp-meta,
+    .bento-exp-microsoft,
+    .bento-exp-callpicker {
+        grid-column: span 1;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
